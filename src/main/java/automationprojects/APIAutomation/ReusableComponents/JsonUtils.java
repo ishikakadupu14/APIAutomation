@@ -2,7 +2,7 @@ package automationprojects.APIAutomation.ReusableComponents;
 
 import io.restassured.path.json.JsonPath;
 
-public class ResponseUtils {
+public class JsonUtils {
 	
 	
 	public static Object getKeyValue(String response, String key)

@@ -1,4 +1,4 @@
-package automationprojects.APIAutomation.ReusableComponents;
+package automationprojects.APIAutomation.Specifications;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
