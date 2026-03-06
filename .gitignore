@@ -1,3 +1,29 @@
+# Compiled Java classes
 target/
 test-output/
+
+# API Execution Logs
 logging.txt
+*.log
+
+# Extent Reports and Screenshots
+Reports/
+spark.html
+extent.html
+
+# IDE specific files
+.settings/
+.classpath
+.project
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment/Secret files (if you use them)
+.env
+config.local.properties
