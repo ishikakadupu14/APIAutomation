@@ -45,7 +45,7 @@ public class EventManagementTest extends TestCaseBase {
 		EventsResponse obj = given().spec(RequestSpecifications.postEventRequestSpecification(event, token)).when()
 				.post("/events").then().spec(ResponseSpecifications.getResponseSpecification(201)).extract().response()
 				.as(EventsResponse.class);
-
+		tearDown();
 		Integer id = obj.getData().getId();
 		CustomAssertions.assertTrue(id != null,"Verify Id is not null");
 		String message = obj.getMessage();
@@ -58,7 +58,8 @@ public class EventManagementTest extends TestCaseBase {
 
 		Response response = given().spec(RequestSpecifications.getEventRequestSpecification(token)).when()
 				.get("/events").then().spec(ResponseSpecifications.getResponseSpecification(200)).extract().response();
-				List<EventData> events = response.jsonPath().getList("data", EventData.class);
+		tearDown();
+		List<EventData> events = response.jsonPath().getList("data", EventData.class);
 		events.forEach(obj->CustomAssertions.assertTrue(obj.getId() != null,"Verify Id is not null"));
 
 	}

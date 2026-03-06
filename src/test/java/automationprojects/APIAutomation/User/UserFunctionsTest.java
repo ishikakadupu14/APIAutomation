@@ -22,8 +22,10 @@ public class UserFunctionsTest extends TestCaseBase {
 		String response = given().log().all().spec(RequestSpecifications.getRequestSpecification())
 				.header("Authorization", token).when().get("/auth/me").then()
 				.spec(ResponseSpecifications.getResponseSpecification(200)).log().all().extract().response().asString();
+		tearDown();
 		CustomAssertions customAssertions = new CustomAssertions();
-		customAssertions.assertEquals(JsonUtils.getKeyValue(response, "user.email"), data.get("email"), "Verify email of the current logged in user");
+		String email= System.getProperty("email");
+		customAssertions.assertEquals(JsonUtils.getKeyValue(response, "user.email"), email, "Verify email of the current logged in user");
 
 	}
 

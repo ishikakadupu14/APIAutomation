@@ -26,7 +26,7 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
 
-public class ExtentReportManager implements ITestListener {
+public class ExtentReportManager{
 
 	public String logFilePath;
 	public PrintStream logStream;
@@ -66,8 +66,8 @@ public class ExtentReportManager implements ITestListener {
     }
 	
 		  
-	  @AfterMethod
-	public void tearDown(ITestResult result) {
+	  //@AfterMethod
+	public void tearDown() {
         try {
            
             logStream.close();
@@ -77,16 +77,10 @@ public class ExtentReportManager implements ITestListener {
             	getTest().info(MarkupHelper.createCodeBlock(content));
             }
 
-            if (result.getStatus() == ITestResult.FAILURE) {
-            	getTest().fail("Test Failed: " + result.getThrowable());
-            } else if (result.getStatus() == ITestResult.SUCCESS) {
-            	getTest().pass("Test Passed");
-            }
-
         } catch (IOException e) {
         	getTest().fail("Could not attach log file: " + e.getMessage());
         }
-        reports.flush();
+        
     }	   
 	
 	  public static void emptyReportsFolder()
